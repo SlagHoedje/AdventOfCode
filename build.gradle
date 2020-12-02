@@ -1,0 +1,6 @@
+plugins {
+    id 'java'
+}
+
+group 'nl.chrisb'
+version '0.0'
