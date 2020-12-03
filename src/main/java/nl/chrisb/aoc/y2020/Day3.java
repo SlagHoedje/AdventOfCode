@@ -3,10 +3,18 @@ package nl.chrisb.aoc.y2020;
 import nl.chrisb.aoc.common.Day;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Day3 extends Day {
     public Day3() {
         super(2020, 3);
+    }
+
+    private int countTreesOneLiner(List<String> map, int dx, int dy) {
+        return (int) IntStream.range(0, map.size() - 1)
+                .filter(i -> i != 0 && i % dy == 0)
+                .filter(i -> map.get(i).charAt((i * dx) % map.get(i).length()) == '#')
+                .count();
     }
 
     private int countTrees(List<String> map, int dx, int dy) {
