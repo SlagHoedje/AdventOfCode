@@ -135,7 +135,6 @@ public class Day4 extends Day {
 
             List<String> left = new ArrayList<>(Arrays.asList(requirements));
             left.removeAll(gotRequirements);
-            System.out.println(left + " : " + gotRequirements);
             if (left.size() == 0) {
                 count++;
             }
