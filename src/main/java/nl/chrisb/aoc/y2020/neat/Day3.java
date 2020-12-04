@@ -1,8 +1,9 @@
-package nl.chrisb.aoc.y2020;
+package nl.chrisb.aoc.y2020.neat;
 
 import nl.chrisb.aoc.common.Day;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Day3 extends Day {
     public Day3() {
@@ -10,32 +11,10 @@ public class Day3 extends Day {
     }
 
     private int countTrees(List<String> map, int dx, int dy) {
-        int mapWidth = map.get(0).length();
-        int mapHeight = map.size();
-
-        int x = 0;
-        int y = 0;
-
-        int trees = 0;
-
-        while (true) {
-            x += dx;
-            y += dy;
-
-            if (y >= mapHeight) {
-                break;
-            }
-
-            if (x >= mapWidth) {
-                x -= mapWidth;
-            }
-
-            if (map.get(y).charAt(x) == '#') {
-                trees++;
-            }
-        }
-
-        return trees;
+        return (int) IntStream.range(0, map.size() - 1)
+                .filter(i -> i != 0 && i % dy == 0)
+                .filter(i -> map.get(i).charAt((i * dx) % map.get(i).length()) == '#')
+                .count();
     }
 
     @Override
